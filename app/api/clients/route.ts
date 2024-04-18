@@ -20,3 +20,15 @@ const clients: Client[] = [
 export function GET() {
     return Response.json(clients);
 }
+
+export function POST() {
+    clients.push({
+        name: "Pedro Oliveira",
+        address: "Rua do Pedro Oliveira"
+    });
+
+    Response.json({
+        status: "Added",
+    });
+
+}
