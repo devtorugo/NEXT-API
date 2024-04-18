@@ -21,14 +21,17 @@ export function GET() {
     return Response.json(clients);
 }
 
-export function POST() {
-    clients.push({
-        name: "Pedro Oliveira",
-        address: "Rua do Pedro Oliveira"
-    });
+export async function POST(request: Request) {
+        const form = await request.formData();
+        const name = form.get('name') as string;
+        const address = form.get('address') as string;
 
-    Response.json({
-        status: "Added",
-    });
+        clients.push({
+                name,
+                address,
+        });
+    
 
+    return Response.json({ status: "Added"});
 }
+
